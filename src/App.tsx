@@ -3,6 +3,7 @@ import { Button } from "@material-ui/core";
 import { makeStyles } from '@material-ui/styles';
 import './App.css';
 import { startTracking, stopTracking } from './Tracker/LocationTracker';
+import { CSVLink } from "react-csv";
 
 const useStyles = makeStyles({
   root: {
@@ -12,24 +13,29 @@ const useStyles = makeStyles({
   },
 });
 
+let watchID: number = 0; 
+
 const App = () => {
-  let watchID: number = 0; 
 
   const classes = useStyles();
 
+  const [loctionData, setLocationData] = React.useState([])
+
   const handleClickStartTracking = () => {
-    const watchID = startTracking()
-    console.log(watchID)
+    watchID = startTracking() as number
   }
 
   const handleClickStopTracking = () => {
     stopTracking(watchID)
+    const final = localStorage.getItem("locations") || "[]"
+    setLocationData(JSON.parse(final))
   }
 
   return (
     <div className="App">
       <Button variant="outlined" color="primary" className={classes.root} onClick={handleClickStartTracking} >Start Tracking</Button>
       <Button variant="outlined" color="primary" className={classes.root} onClick={handleClickStopTracking} >Stop Tracking</Button>
+      <CSVLink data={loctionData}>Download Data</CSVLink>
     </div>
   );
 }
