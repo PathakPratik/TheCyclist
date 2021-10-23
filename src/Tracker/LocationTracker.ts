@@ -9,7 +9,7 @@ const trackingOptions = {
   timeout: ONE_SEC,
 };
 
-const success = (e: GeolocationPosition) => {
+const success = (geolocation: GeolocationPosition) => {
 
   const {
     coords: {
@@ -17,7 +17,7 @@ const success = (e: GeolocationPosition) => {
       longitude
     },
     timestamp
-  } = e;
+  } = geolocation;
 
   const position = { latitude, longitude, timestamp }
 
