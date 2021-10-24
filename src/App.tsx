@@ -29,6 +29,7 @@ const App = () => {
     stopTracking(watchID)
     const final = localStorage.getItem("locations") || "[]"
     setLocationData(JSON.parse(final))
+    localStorage.removeItem("locations")
   }
 
   return (
