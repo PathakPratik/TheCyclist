@@ -9,6 +9,11 @@ const trackingOptions = {
   timeout: ONE_SEC,
 };
 
+export type Position = {
+  latitude: number,
+  longitude: number,
+  timestamp: number
+}
 const success = (geolocation: GeolocationPosition) => {
 
   const {
@@ -19,7 +24,7 @@ const success = (geolocation: GeolocationPosition) => {
     timestamp
   } = geolocation;
 
-  const position = { latitude, longitude, timestamp }
+  const position: Position = { latitude, longitude, timestamp }
 
   saveData(position);
 }
