@@ -14,8 +14,8 @@ export type Position = {
   longitude: number,
   timestamp: number
 }
-const success = (geolocation: GeolocationPosition) => {
 
+const getPosition = (geolocation: GeolocationPosition) => {
   const {
     coords: {
       latitude,
@@ -24,10 +24,10 @@ const success = (geolocation: GeolocationPosition) => {
     timestamp
   } = geolocation;
 
-  const position: Position = { latitude, longitude, timestamp }
-
-  saveData(position);
+  return { latitude, longitude, timestamp }
 }
+
+const success = (geolocation: GeolocationPosition) => saveData(getPosition(geolocation));
 
 const error = (err:any) => {
   console.log(err);
@@ -47,4 +47,8 @@ const stopTracking = (watchID: number) => {
   alert('Stopped Tracking')
 }
 
-export { startTracking, stopTracking }
+const getCurrentPosition = (fn: (position: Position) => void) => {
+  navigator.geolocation.getCurrentPosition((geolocation: GeolocationPosition) => fn(getPosition(geolocation)), error, trackingOptions);
+}
+
+export { startTracking, stopTracking, getCurrentPosition }

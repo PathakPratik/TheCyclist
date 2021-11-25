@@ -2,8 +2,9 @@ import React from 'react';
 import { Button } from "@material-ui/core";
 import { makeStyles } from '@material-ui/styles';
 import AppBar from './components/AppBar';
+import Map from './components/Map'
 import './App.css';
-import { startTracking, stopTracking } from './Tracker/LocationTracker';
+import { Position, startTracking, stopTracking, getCurrentPosition } from './Tracker/LocationTracker';
 import { CSVLink } from "react-csv";
 
 const useStyles = makeStyles({
@@ -23,8 +24,13 @@ const App = () => {
 
   const classes = useStyles();
 
-  const [loctionData, setLocationData] = React.useState([])
+  const [loctionData, setLocationData] = React.useState<Array<Position>>([])
   const [disabledBtn, setDisabledBtn] = React.useState(STOP_TRIP_BTN)
+  const [currentPosition, setCurrentPosition] = React.useState<Position>({latitude: 53.3402793, longitude: -6.2886687, timestamp: 1634990177125})
+
+  React.useEffect(() => {
+    getCurrentPosition(setCurrentPosition)
+  })
 
   const handleClickStartTracking = () => {
     watchID = startTracking() as number
@@ -42,6 +48,7 @@ const App = () => {
   return (
     <div className="App">
       <AppBar />
+      <Map location={currentPosition} />
       <Button variant="outlined" color="primary" className={classes.root} onClick={handleClickStartTracking} disabled={disabledBtn === START_TRIP_BTN}>Start Tracking</Button>
       <Button variant="outlined" color="primary" className={classes.root} onClick={handleClickStopTracking} disabled={disabledBtn === STOP_TRIP_BTN}>Stop Tracking</Button>
       <CSVLink data={loctionData}>Download Data</CSVLink>
