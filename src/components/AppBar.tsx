@@ -7,6 +7,7 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Divider, Drawer, List, ListItem, ListItemText } from '@mui/material';
+import { NavLink } from 'react-router-dom';
 
 export default function ButtonAppBar() {
 
@@ -15,21 +16,21 @@ export default function ButtonAppBar() {
   const anchor = 'left'
   
   const drawerList = new Map([
-    [ 'home','Home' ],
+    [ '','Home' ],
     [ 'trips', 'My Trips' ]
   ]);
 
   const list = () => (
     <Box
-      sx={{ width: 250 }}
+      sx={{ width: 180 }}
       role="presentation"
       onClick={() => setOpenDrawer(false)}
       onKeyDown={() => setOpenDrawer(false)}
     >
       <List>
         {Array.from(drawerList).map(([index, text]) => (
-          <ListItem button key={text} onClick={() => alert(text)}>
-            <ListItemText primary={text} />
+          <ListItem button key={text}>
+            <NavLink to={"/"+index}><ListItemText primary={text} /></NavLink>
           </ListItem>
         ))}
       </List>

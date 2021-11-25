@@ -3,7 +3,7 @@ import { Position } from "../Tracker/LocationTracker";
 
 export default function Map({location}:{location: Position}) {
     return (
-        <MapContainer center={[location.latitude, location.longitude]} zoom={12}scrollWheelZoom={false}>
+        <MapContainer center={[location.latitude, location.longitude]} zoom={12} scrollWheelZoom={false}>
         <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
