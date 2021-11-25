@@ -49,9 +49,9 @@ const App = () => {
     <div className="App">
       <AppBar />
       <Map location={currentPosition} />
-      <Button variant="outlined" color="primary" className={classes.root} onClick={handleClickStartTracking} disabled={disabledBtn === START_TRIP_BTN}>Start Tracking</Button>
-      <Button variant="outlined" color="primary" className={classes.root} onClick={handleClickStopTracking} disabled={disabledBtn === STOP_TRIP_BTN}>Stop Tracking</Button>
-      <CSVLink data={loctionData}>Download Data</CSVLink>
+      <Button variant="contained" color="primary" className={classes.root} onClick={handleClickStartTracking} disabled={disabledBtn === START_TRIP_BTN}>Start Trip</Button>
+      <Button variant="contained" color="primary" className={classes.root} onClick={handleClickStopTracking} disabled={disabledBtn === STOP_TRIP_BTN}>Stop Trip</Button>
+      {/* <CSVLink data={loctionData}>Download Data</CSVLink> */}
     </div>
   );
 }

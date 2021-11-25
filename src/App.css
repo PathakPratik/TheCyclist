@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  background: ghostwhite;
+  height: 100vh;
 }
 
 .leaflet-container {
