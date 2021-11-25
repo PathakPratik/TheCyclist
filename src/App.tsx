@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button } from "@material-ui/core";
 import { makeStyles } from '@material-ui/styles';
+import AppBar from './components/AppBar';
 import './App.css';
 import { startTracking, stopTracking } from './Tracker/LocationTracker';
 import { CSVLink } from "react-csv";
@@ -40,6 +41,7 @@ const App = () => {
 
   return (
     <div className="App">
+      <AppBar />
       <Button variant="outlined" color="primary" className={classes.root} onClick={handleClickStartTracking} disabled={disabledBtn === START_TRIP_BTN}>Start Tracking</Button>
       <Button variant="outlined" color="primary" className={classes.root} onClick={handleClickStopTracking} disabled={disabledBtn === STOP_TRIP_BTN}>Stop Tracking</Button>
       <CSVLink data={loctionData}>Download Data</CSVLink>

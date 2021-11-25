@@ -17,7 +17,7 @@ const saveLocationData = (position: Position) => {
     };
 
     return fetch(process.env.REACT_APP_API_ENDPOINT+"data/location", requestOptions)
-    .then(response => console.log(response.json()))
+    .then(response => console.log(response))
     .catch(err => console.log(err))
 }
 
