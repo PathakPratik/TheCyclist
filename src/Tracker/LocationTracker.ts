@@ -11,20 +11,24 @@ const trackingOptions = {
 
 export type Position = {
   latitude: number,
+  Latitude?: number,
   longitude: number,
-  timestamp: number
+  Longitude?: number,
+  timestamp: number,
+  speed?: number | null
 }
 
 const getPosition = (geolocation: GeolocationPosition) => {
   const {
     coords: {
       latitude,
-      longitude
+      longitude,
+      speed
     },
     timestamp
   } = geolocation;
 
-  return { latitude, longitude, timestamp }
+  return { latitude, longitude, timestamp, speed }
 }
 
 const success = (geolocation: GeolocationPosition) => saveData(getPosition(geolocation));

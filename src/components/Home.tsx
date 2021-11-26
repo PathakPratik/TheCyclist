@@ -27,7 +27,8 @@ const Home = () => {
   const [currentPosition, setCurrentPosition] = React.useState<Position>({latitude: 53.3402793, longitude: -6.2886687, timestamp: 1634990177125})
 
   React.useEffect(() => {
-    getCurrentPosition(setCurrentPosition)
+    const id = window.setInterval(() => getCurrentPosition(setCurrentPosition),1000)
+    return () => clearInterval(id)
   })
 
   const handleClickStartTracking = () => {

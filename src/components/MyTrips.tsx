@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import getTrips from "../API/getTrips";
+import TripPath from "./TripPath";
 
 const MyTrips = () => {
 
@@ -11,11 +12,7 @@ const MyTrips = () => {
 
   return (
   <>
-    {
-        trips && trips.map((trip) => (
-            <div>{"Lat: "+trip.Latitude+"Long: "+trip.Longitude}</div>
-        ))
-    }   
+    { trips[0] && <TripPath data={trips} />}
   </>
   );
 }
