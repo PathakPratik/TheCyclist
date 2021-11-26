@@ -5,7 +5,7 @@ const saveLocationData = (position: Position) => {
 
     const payload = { 
         UserId: 1,
-        TripId: 2,
+        TripId: localStorage.getItem("TripId") || "-1",
         RecordID: getRecordId(position.timestamp, 1, 2),
         ...position
     };

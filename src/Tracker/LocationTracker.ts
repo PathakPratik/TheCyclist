@@ -1,4 +1,5 @@
 import { saveData } from '../Data/LocationData'
+import { getTripId } from "../utils/common"
 
 const FIVE_SECS = 5000;
 const ONE_SEC = 1000;
@@ -37,16 +38,27 @@ const error = (err:any) => {
   console.log(err);
 }
 
+const createTripId = () => {
+  const id = getTripId(Date.now())
+  localStorage.setItem("TripId", JSON.stringify(id));
+}
+
+const resetTripId = () => {
+  localStorage.removeItem("TripId");
+}
+
 const startTracking = () => {
   if(!navigator.geolocation) {
     alert('Geolocation is not supported! Please try again!')
   } else {
     alert('Locating ...')
+    createTripId()
     return navigator.geolocation.watchPosition(success, error, trackingOptions)
   }
 }
 
 const stopTracking = (watchID: number) => {
+  resetTripId()
   navigator.geolocation.clearWatch(watchID)
   alert('Stopped Tracking')
 }
