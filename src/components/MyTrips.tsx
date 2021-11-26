@@ -1,7 +1,22 @@
- 
+import { useEffect, useState } from "react";
+import getTrips from "../API/getTrips";
+
 const MyTrips = () => {
-  return (      
-      <div>Test</div>
+
+  const [trips, setTrips] = useState<Array<any>>([]);
+
+  useEffect(() => {
+    getTrips().then((res) => setTrips(res))
+  },[])
+
+  return (
+  <>
+    {
+        trips && trips.map((trip) => (
+            <div>{"Lat: "+trip.Latitude+"Long: "+trip.Longitude}</div>
+        ))
+    }   
+  </>
   );
 }
  

@@ -3,6 +3,7 @@ import './App.css';
 import Home from './components/Home';
 import Navigation from './components/AppBar';
 import MyTrips from './components/MyTrips';
+import Events from './components/Events';
  
 const App = () => {
   return (      
@@ -12,6 +13,7 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Home/>}/>
             <Route path="/trips" element={<MyTrips/>}/>
+            <Route path="/events" element={<Events/>}/>
           </Routes>
       </div> 
     </BrowserRouter>
