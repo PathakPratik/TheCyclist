@@ -9,7 +9,6 @@ function Timer() {
     seconds,
     minutes,
     hours,
-    days,
     start,
     pause,
   } = useTimer({ expiryTimestamp: time });

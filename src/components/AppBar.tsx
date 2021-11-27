@@ -3,7 +3,6 @@ import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Divider, Drawer, List, ListItem, ListItemText } from '@mui/material';
@@ -18,7 +17,8 @@ export default function ButtonAppBar() {
   const drawerList = new Map([
     [ '','Home' ],
     [ 'trips', 'All Trips' ],
-    [ 'events', 'Events' ]
+    [ 'events', 'Events' ],
+    [ 'report', 'Report' ],
   ]);
 
   const list = () => (
@@ -31,7 +31,9 @@ export default function ButtonAppBar() {
       <List>
         {Array.from(drawerList).map(([index, text]) => (
           <ListItem button key={text}>
-            <NavLink to={"/"+index}><ListItemText primary={text} /></NavLink>
+            <NavLink style={{ textDecoration: 'none', color:'#1976d2' }} to={"/"+index}>
+                <ListItemText primary={text} />
+            </NavLink>
           </ListItem>
         ))}
       </List>
@@ -54,7 +56,7 @@ export default function ButtonAppBar() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" component="div">
+          <Typography variant="h6" component="div" style={{marginLeft: '20px'}}>
             The Cyclist
           </Typography>
           {/* <Button color="inherit">Login</Button> */}
