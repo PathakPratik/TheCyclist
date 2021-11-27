@@ -1,20 +1,23 @@
-// import { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "@material-ui/core";
 import { TextareaAutosize } from "@mui/material";
 
 const Report = () => {
+
+  const [text, setText] = useState('')
 
   const handleImageChange = () => {
     alert("Uploaded Successfully!")
   }
 
   const handleSubmit = () => {
+    setText('')
     alert("Submitted Successfully!")
   }
 
   return (
     <div>
-        <div style={{ marginTop: '2rem' }}>Faced an issue while while cycling?</div>
+        <div style={{ marginTop: '2rem' }}>Faced an issue while cycling?</div>
         <div>Report now</div>
         <div style={{ marginTop: '2rem' }}><b>Upload picture</b></div>
         <label>
@@ -25,6 +28,8 @@ const Report = () => {
         <TextareaAutosize
             aria-label="minimum height"
             minRows={3}
+            value={text}
+            onChange={(event) => setText(event.target.value)}
             placeholder="Please describe in as much detail as possible"
             style={{ width: 200, marginTop: '0.5rem' }}
         />

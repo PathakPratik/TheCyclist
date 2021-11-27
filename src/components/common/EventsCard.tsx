@@ -23,13 +23,13 @@ const EventsCard = (props:Props) => (
         subheader={props.EventCity+", "+props.EventDate}
       />
       <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
+        <IconButton style={{ margin: '0 auto' }} aria-label="add to favorites">
           <FavoriteIcon />
         </IconButton>
-        <IconButton aria-label="share">
+        <IconButton style={{ margin: '0 auto' }} aria-label="share">
           <ShareIcon />
         </IconButton>
-        <Button 
+        <Button style={{ margin: '0 auto' }}
             variant="contained" 
             color="primary" 
             target="_blank" 

@@ -28,10 +28,10 @@ const TripsCard = (props:Props) => {
           // subheader={props.EventCity+", "+props.EventDate}
         />
         <CardActions disableSpacing>
-          <IconButton aria-label="add to favorites">
+          <IconButton style={{ margin: '0 auto' }} aria-label="add to favorites">
             <FavoriteIcon />
           </IconButton>
-          <IconButton aria-label="share">
+          <IconButton style={{ margin: '0 auto' }} aria-label="share">
             <ShareIcon />
           </IconButton>
         </CardActions>
