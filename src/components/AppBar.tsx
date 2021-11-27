@@ -17,7 +17,7 @@ export default function ButtonAppBar() {
   
   const drawerList = new Map([
     [ '','Home' ],
-    [ 'trips', 'My Trips' ],
+    [ 'trips', 'All Trips' ],
     [ 'events', 'Events' ]
   ]);
 

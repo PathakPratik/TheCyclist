@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import getEvents from "../API/getEvents";
-import Card from './common/Card';
+import Card from './common/EventsCard';
 const Events = () => {
 
   const [events, setEvents] = useState<Array<any>>([]);

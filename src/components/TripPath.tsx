@@ -10,7 +10,7 @@ export default function TripPath({data}:{data: Position[]}) {
     useEffect(() => {
         setFirst([data[0].Latitude as number, data[0].Longitude as number])
         setLast([data[data.length -1].Latitude as number, data[data.length -1].Longitude as number])
-    },[])
+    },[data])
 
     // const polyline = [
     //     [53.3152793, -6.2516687], [53.3352793, -6.2716687], [53.3552793, -6.2416687], [53.3552793, -6.2916687]
