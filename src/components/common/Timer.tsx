@@ -1,4 +1,4 @@
-import { useTimer } from 'react-timer-hook';
+import { useStopwatch } from 'react-timer-hook';
 
 function Timer() {
 
@@ -8,18 +8,14 @@ function Timer() {
   const {
     seconds,
     minutes,
-    hours,
-    start,
-    pause,
-  } = useTimer({ expiryTimestamp: time });
+    hours
+  } = useStopwatch({ autoStart: true });
 
   return (
     <div style={{textAlign: 'center'}}>
       <div style={{fontSize: '40px'}}>
-        <span>{hours}</span>:<span>{minutes}</span>:<span>{seconds}</span>
+        <span>{('0'+hours).slice(-2)}</span>:<span>{('0'+minutes).slice(-2)}</span>:<span>{('0'+seconds).slice(-2)}</span>
       </div>
-      <button onClick={() => start}>Start</button>
-      <button onClick={() => pause}>Pause</button>
     </div>
   );
 }
