@@ -2,6 +2,7 @@ import React from 'react';
 import { Button } from "@material-ui/core";
 import { makeStyles } from '@material-ui/styles';
 import Map from '../components/Map'
+import Timer from '../components/common/Timer'
 import { Position, startTracking, stopTracking, getCurrentPosition } from '../Tracker/LocationTracker';
 // import { CSVLink } from "react-csv";
 
@@ -47,6 +48,7 @@ const Home = () => {
   return (
     <>
       <Map location={currentPosition} />
+      <Timer />
       <Button variant="contained" color="primary" className={classes.root} onClick={handleClickStartTracking} disabled={disabledBtn === START_TRIP_BTN}>Start Trip</Button>
       <Button variant="contained" color="primary" className={classes.root} onClick={handleClickStopTracking} disabled={disabledBtn === STOP_TRIP_BTN}>Stop Trip</Button>
       {/* <CSVLink data={loctionData}>Download Data</CSVLink> */}
