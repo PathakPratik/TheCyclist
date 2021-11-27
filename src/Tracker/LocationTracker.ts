@@ -29,7 +29,7 @@ const getPosition = (geolocation: GeolocationPosition) => {
     timestamp
   } = geolocation;
 
-  return { latitude, longitude, timestamp, speed }
+  return { latitude, longitude, timestamp, speed: speed || -1 }
 }
 
 const success = (geolocation: GeolocationPosition) => saveData(getPosition(geolocation));
