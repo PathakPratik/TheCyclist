@@ -23,6 +23,7 @@
     "react-router-dom": "^6.0.2",
     "react-scripts": "4.0.3",
     "react-timer-hook": "^3.0.5",
+    "serve": "^13.0.2",
     "typescript": "^4.4.4",
     "web-vitals": "^0.2.4",
     "workbox-background-sync": "^5.1.4",
@@ -39,7 +40,7 @@
     "workbox-streams": "^5.1.4"
   },
   "scripts": {
-    "start": "serve -s build",
+    "start": "react-scripts build && serve -s build",
     "dev": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
