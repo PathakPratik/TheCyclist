@@ -29,11 +29,12 @@ const MyTrips = () => {
   return (
   <>
     {/* <div>All Trips</div> */}
-    { tripId ? trips[0] && 
+    { tripId ? trips && trips[0] && 
         trips.map((trip) => {
             if(trip[0].TripId == tripId) return <TripPath data={trip} /> 
         })
-      : trips[0] && trips.map((trip) => <TripsCard TripId={trip[0].TripId} Timestamp={timeConverter(trip[0].Timestamp)} />  
+      : trips && trips[0] && trips.map((trip) =>
+            <TripsCard TripId={trip[0].TripId} Duration={trip[trip.length-1].Temp} Timestamp={timeConverter(trip[0].Timestamp)} /> 
     )}
   </>
   );

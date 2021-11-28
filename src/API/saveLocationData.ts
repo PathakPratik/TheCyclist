@@ -7,7 +7,7 @@ const saveLocationData = (position: Position) => {
         UserId: 1,
         TripId: localStorage.getItem("TripId") || "-1",
         RecordID: getRecordId(position.timestamp, 1, 2),
-        Temp: 1,
+        Timer: localStorage.getItem("timerValue") || '00:00:00',
         ...position
     };
 

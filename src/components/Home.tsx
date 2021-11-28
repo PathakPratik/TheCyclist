@@ -23,10 +23,10 @@ const Home = () => {
 
   const classes = useStyles();
 
-  const [loctionData, setLocationData] = React.useState<Array<Position>>([])
+//   const [loctionData, setLocationData] = React.useState<Array<Position>>([])
   const [disabledBtn, setDisabledBtn] = React.useState(STOP_TRIP_BTN)
   const [currentPosition, setCurrentPosition] = React.useState<Position>({latitude: 53.3402793, longitude: -6.2886687, timestamp: 1634990177125})
-  const [showTimer, setShowTimer] = React.useState<boolean>(false)
+  const [startTimer, setStartTimer] = React.useState<boolean>(false)
 
   React.useEffect(() => {
     const id = window.setInterval(() => getCurrentPosition(setCurrentPosition),1000)
@@ -36,22 +36,24 @@ const Home = () => {
   const handleClickStartTracking = () => {
     watchID = startTracking() as number
     setDisabledBtn(START_TRIP_BTN)
-    setShowTimer(true)
+    setStartTimer(true)
+    localStorage.removeItem("timerValue")
   }
 
   const handleClickStopTracking = () => {
     stopTracking(watchID)
-    const final = localStorage.getItem("locations") || "[]"
-    setLocationData(JSON.parse(final))
+    
+    // const final = localStorage.getItem("locations") || "[]"
+    // setLocationData(JSON.parse(final))
     localStorage.removeItem("locations")
     setDisabledBtn(STOP_TRIP_BTN)
-    setShowTimer(false)
+    setStartTimer(false)
   }
 
   return (
     <>
       <Map location={currentPosition} />
-      {showTimer && <Timer /> }
+      <Timer startTimer={startTimer} />
       <Button variant="contained" color="primary" className={classes.root} onClick={handleClickStartTracking} disabled={disabledBtn === START_TRIP_BTN}>Start Trip</Button>
       <Button variant="contained" color="primary" className={classes.root} onClick={handleClickStopTracking} disabled={disabledBtn === STOP_TRIP_BTN}>Stop Trip</Button>
       {/* <CSVLink data={loctionData}>Download Data</CSVLink> */}

@@ -5,12 +5,12 @@ import CardActions from '@mui/material/CardActions';
 import IconButton from '@mui/material/IconButton';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
-import { Button } from "@material-ui/core";
 import { useNavigate } from "react-router-dom";
 
 type Props = {
     Timestamp: string,
-    TripId: number
+    TripId: number,
+    Duration: string
 }
 
 const TripsCard = (props:Props) => {
@@ -24,8 +24,8 @@ const TripsCard = (props:Props) => {
         }
       }>
         <CardHeader
-          title={props.Timestamp}
-          // subheader={props.EventCity+", "+props.EventDate}
+          title={"Time: " + props.Timestamp}
+          subheader={"Duration: " + props.Duration}
         />
         <CardActions disableSpacing>
           <IconButton style={{ margin: '0 auto' }} aria-label="add to favorites">
